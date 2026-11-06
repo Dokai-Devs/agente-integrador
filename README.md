@@ -1,23 +1,29 @@
-# Dokaidemy
+# Agente integrador
 
-Es la app donde cada uno sigue su plan de formación en DokaiDevs. Es la entrega de la etapa 4: se construye sobre [`plantilla-cliente`](https://github.com/Dokai-Devs/plantilla-cliente), así que usa el mismo stack y las mismas reglas que un proyecto de cliente.
+Es el proyecto integrador del plan de formación de DokaiDevs: un producto chico de agente de IA para un negocio ficticio, hecho de punta a punta. Se construye sobre [`plantilla-cliente`](https://github.com/Dokai-Devs/plantilla-cliente), con el mismo stack y las mismas reglas que el proyecto de un cliente.
 
-Mientras no esté lista, el avance se sigue con un issue por entrega en los repos de práctica.
+## Qué tiene
 
-## Qué tiene que hacer (primera versión)
+- **Landing del negocio**, con un chat.
+- **Agente** que responde las preguntas frecuentes y toma consultas: nombre, contacto y mensaje.
+  - Llama al modelo desde un solo módulo y tiene un límite de gasto.
+  - Si no sabe algo, no inventa: deriva a una persona.
+- **Panel de configuración con login**, donde el dueño del negocio:
+  - edita las instrucciones del agente, las preguntas frecuentes, los horarios y los datos de contacto;
+  - ve las consultas que entraron.
+- **Base de datos en Supabase con RLS:** cada dueño ve solo su configuración y sus consultas, y cada regla tiene su test.
+- **Deploy en Vercel** con un preview por PR, y CI con lint, typecheck y tests.
 
-- **Personas con rol:** aprendiz o mentor.
-- **Etapas del plan:** nombre, semanas y qué se entrega.
-- **Entregas:** una por persona y etapa, con estado, link al PR o a la demo y notas.
-- **Validación:** el mentor aprueba la entrega o pide cambios, con un comentario.
-- **Permisos con RLS:** cada aprendiz ve y edita solo lo suyo; el mentor ve todo y valida. Cada regla tiene un test.
-- **Webhook de GitHub:** cuando se mergea un PR que cierra un issue de entrega, Dokaidemy lo registra como evidencia. Valida la firma del webhook y el cuerpo con Zod.
+## Por etapas
 
-## Qué no tiene (por ahora)
-
-Cursos, cuestionarios, puntajes ni notificaciones.
+| Etapa | Qué se suma |
+| --- | --- |
+| 3. Next.js y Vercel | La landing desplegada, con un chat de respuestas fijas |
+| 4. Supabase y SQL | Login, el panel de configuración, las consultas guardadas con RLS, migraciones y un webhook de entrada validado con Zod |
+| Cierre de la fase 2 | El agente conectado al modelo, que contesta con la configuración del panel y deriva lo que no sabe |
+| Especialización en Agentes | Evals, pruebas de prompt injection, trazas y WhatsApp |
 
 ## Cómo arrancar
 
 1. Crear el diseño de datos en un issue y discutirlo con Pablo antes de escribir migraciones.
-2. Empezar por login y roles, después las etapas y las entregas, y el webhook al final.
+2. Avanzar en el orden de la tabla: cada etapa termina con un PR mergeado y desplegado.
