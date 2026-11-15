@@ -25,5 +25,5 @@ Es el proyecto integrador del plan de formación de DokaiDevs: un producto chico
 
 ## Cómo arrancar
 
-1. Crear el diseño de datos en un issue y discutirlo con Pablo antes de escribir migraciones.
+1. Crear el diseño de datos en un issue y discutirlo con quien revisa antes de escribir migraciones.
 2. Avanzar en el orden de la tabla: cada etapa termina con un PR mergeado y desplegado.
